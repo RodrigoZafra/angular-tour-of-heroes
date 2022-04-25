@@ -15,13 +15,13 @@ import { state, style, trigger } from '@angular/animations';
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.css'],
   changeDetection: ChangeDetectionStrategy.Default,
-  animations:[
+  animations: [
     trigger('nameChanges', [
       state('none', style({
         color: "warn"
       })),
       state('changes', style({
-        color: "white"
+        background: "red"
       }))
     ])
   ]
@@ -32,7 +32,10 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   detailSubscription: Subscription | undefined;
   fb: FormBuilder = new FormBuilder;
   form!: FormGroup;
-  activatedPowers: string[]| undefined = [];
+  activatedPowers: string[] | undefined = [];
+
+  //animations
+  isWritten: boolean = false;
 
   heroNameForm = new FormControl('');
 
@@ -62,6 +65,14 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
     })
   }
 
+  noChanges() {
+    if (this.heroNameForm.value !== '') {
+      this.isWritten = true
+    } else {
+      this.isWritten = false;
+    }
+  }
+
   ngOnDestroy() {
     this.detailSubscription?.unsubscribe();
   }
@@ -73,7 +84,7 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   save(): void {
     if (this.hero) {
       this.hero.name = this.heroNameForm.value;
-    
+
       let heroe = this.form.value;
       this.activatedPowers = [];
 

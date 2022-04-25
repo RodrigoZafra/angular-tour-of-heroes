@@ -5,16 +5,9 @@
       <a (click)="selectHero(hero.id)">
         <span class="badge">{{ hero.id }}</span> {{ hero.name }}
       </a>
-      <button
-        mat-mini-fab
-        color="accent"
-        type="button"
-        class="delete"
-        title="delete hero"
-        (click)="delete(hero)"
-      >   
+      <button mat-mini-fab color="accent" type="button" class="delete" title="delete hero" (click)="delete(hero)">
 
-      
+
         <mat-icon>delete</mat-icon>
       </button>
     </li>
@@ -28,13 +21,8 @@
       </mat-form-field>
     </form>
 
-    <button
-      mat-mini-fab
-      color="primary"
-      type="button"
-      class="add-button"
-      (click)="add(heroName.value); heroName.value = ''"
-    >
+    <button mat-mini-fab color="primary" type="button" class="add-button"
+      (click)="add(heroName.value); heroName.value = ''">
       <mat-icon>add</mat-icon>
     </button>
   </span>
