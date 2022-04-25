@@ -17,18 +17,18 @@ export class HeroesComponent implements OnInit {
   constructor(private heroService: HeroService,
     private messageService: MessageService,
     public dialog: MatDialog,
-    ) {
+  ) {
   }
 
   ngOnInit(): void {
-	  this.heroService.heroObservable.subscribe(
-		  h => this.heroes = h
-	  );
+    this.heroService.heroObservable.subscribe(
+      h => this.heroes = h
+    );
   }
 
-  selectHero(id: Number){
+  selectHero(id: Number) {
     this.heroService.selectHero(id);
-    this.messageService.add(`HeroeService: heroe with id `+id+` has been selected.`)
+    this.messageService.add(`HeroeService: heroe with id ` + id + ` has been selected.`)
 
     const detailDialog = this.dialog.open(HeroDetailComponent, {
       width: '250px',
@@ -42,7 +42,7 @@ export class HeroesComponent implements OnInit {
     if (!name) {
       return;
     }
-   this.heroService.addHero(name);
+    this.heroService.addHero(name);
   }
 
   delete(hero: Hero): void {

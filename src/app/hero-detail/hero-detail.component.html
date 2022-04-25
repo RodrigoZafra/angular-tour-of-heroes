@@ -5,13 +5,13 @@
     <form>
       <mat-form-field class="change-mat-form" appearance="fill">
         <mat-label for="hero-name">Change your hero name!</mat-label>
-        <input (keydown)="noChanges()" matInput placeholder="Super... something." id="hero-name"
+        <input (keyup)="noChanges()" matInput placeholder="Super... something." id="hero-name"
           [formControl]="heroNameForm" />
-        <section [formGroup]="form" class="powers-checkgroup">
+        <section [formGroup]="form" class="powers-checkgroup" *ngFor="let enum of data2">
           <!--Seguramente se pudiera hacer con un for-->
-          <mat-checkbox class="powers-checkbox" formControlName="force">Force</mat-checkbox><br />
-          <mat-checkbox class="powers-checkbox" formControlName="elasticity">Elasticity</mat-checkbox><br />
-          <mat-checkbox class="powers-checkbox" formControlName="invisibility">Invisibility</mat-checkbox><br />
+          <mat-checkbox class="powers-checkbox" formControlName={{enum}}>{{enum}}</mat-checkbox><br /> 
+          <!-- <mat-checkbox class="powers-checkbox" formControlName="elasticity">Elasticity</mat-checkbox><br />
+          <mat-checkbox class="powers-checkbox" formControlName="invisibility">Invisibility</mat-checkbox><br /> -->
         </section>
 
       </mat-form-field>

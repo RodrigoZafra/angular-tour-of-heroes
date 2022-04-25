@@ -8,7 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HeroesComponent } from '../heroes/heroes.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { state, style, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-hero-detail',
@@ -21,8 +21,12 @@ import { state, style, trigger } from '@angular/animations';
         color: "warn"
       })),
       state('changes', style({
-        background: "red"
-      }))
+        background: "red",
+        color: "white"
+      })),
+      transition('none <=> changes', [
+        animate('1s')
+      ]),
     ])
   ]
 })
@@ -34,6 +38,10 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   activatedPowers: string[] | undefined = [];
 
+  data = Powers;
+  data2 = Object.values(Powers);
+
+
   //animations
   isWritten: boolean = false;
 
@@ -42,7 +50,7 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   constructor(
     private heroService: HeroService,
     private location: Location,
-    public detailDialog: MatDialogRef<HeroesComponent>
+    public detailDialog: MatDialogRef<HeroesComponent>,
   ) {
   }
 
@@ -55,13 +63,14 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
         this.form = this.initForm();
       }
     );
+    console.log(this.data);
   }
 
   initForm(): FormGroup {
     return this.fb.group({
-      force: this.activatedPowers?.includes('force'),
-      elasticity: this.activatedPowers?.includes('elasticity'),
-      invisibility: this.activatedPowers?.includes('invisibility')
+      force: this.activatedPowers?.includes(Powers.force),
+      elasticity: this.activatedPowers?.includes(Powers.elasticity),
+      invisibility: this.activatedPowers?.includes(Powers.invisibility)
     })
   }
 
