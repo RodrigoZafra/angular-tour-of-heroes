@@ -1,0 +1,33 @@
+div {
+	display:flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 20px;
+}
+
+.search-result {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.search-result li {
+	list-style: none;
+	margin-top: 20px;
+}
+
+.search-result li a {
+	color:#4e16ae;
+	background-color: white;
+	border: 1px solid #411887;
+	padding: 1em;
+	text-decoration: none;
+	margin: 10px;
+	border-radius: 4px;
+	width: 100%;
+}
+
+.search-result li a:hover {
+	color: #ece0ff;
+	background-color: #411887;
+	border: 1px solid #411887;
+}

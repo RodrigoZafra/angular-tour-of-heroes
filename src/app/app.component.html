@@ -1,0 +1,19 @@
+<div>
+  <header>
+    <h3>{{ title }}</h3>
+    <div>
+      <nav mat-tab-nav-bar [backgroundColor]="background" [tabPanel]="tabPanel" animationDuration="100ms">
+        <a mat-tab-link *ngFor="let link of links"
+           (click)="activeLink = link"
+           [active]="activeLink == link"
+           [routerLink]="link"
+           > {{link | uppercase}} </a>
+      </nav>
+      <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+      
+    </div>
+  </header>
+
+  <router-outlet></router-outlet>
+  <app-mesagges></app-mesagges>
+</div>

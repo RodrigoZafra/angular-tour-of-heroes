@@ -1,0 +1,9 @@
+<div>
+  <h3>Top Heroes</h3>
+  <div class="heroes-menu">
+    <a *ngFor="let hero of heroes" (click)="selectHeroDB(hero.id)">
+      {{ hero.name }}
+    </a>
+  </div>
+  <app-hero-search></app-hero-search>
+</div>

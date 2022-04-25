@@ -1,0 +1,41 @@
+div {	
+	display:flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+div h3 {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	color: #411887;
+
+}
+
+.heroes-menu {
+	display:flex;
+	align-items: center;
+	flex-direction: row;
+}
+  
+  .heroes-menu a {
+	color: white;
+	background-color: #411887;
+	border: 1px solid #411887;
+	text-decoration: none;
+	margin: 10px;
+	padding: .5em 1em;
+	height: 1.6em;
+	border-radius: 4px;
+	width: 100%;
+	display: flex;
+	  }
+  
+  .heroes-menu a:hover {
+	color: #4e16ae;
+	background-color: #ece0ff;
+	border: 1px solid #411887;
+  }
+  
+  
+  

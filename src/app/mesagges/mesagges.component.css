@@ -1,0 +1,19 @@
+div {
+	display:flex;
+	align-items: center;
+	flex-direction: column;
+
+}
+
+div h3 {
+	color: #411887;
+
+}
+
+.clear {
+	margin: 10px;	
+}
+
+.message-section{
+	font-style: italic;
+}

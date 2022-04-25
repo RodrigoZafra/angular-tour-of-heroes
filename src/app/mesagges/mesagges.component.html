@@ -1,0 +1,26 @@
+<div id="message-container">
+  <h3>Messages</h3>
+  <div *ngIf="messageService.messages.length; else noMessages">
+    <div
+      *ngFor="let message of messageService.messages"
+      class="message-section"
+    >
+      {{ message }}
+    </div>
+
+    <button
+      mat-stroked-button
+      type="button"
+      class="clear"
+      color="primary"
+      (click)="messageService.clear()"
+    >
+      Clear messages
+    </button>
+  </div>
+  <ng-template #noMessages>
+	<p><i>
+		Messages have been cleared.
+	</i><p>
+  </ng-template>
+</div>
