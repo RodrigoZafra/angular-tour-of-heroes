@@ -38,6 +38,8 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   activatedPowers: string[] | undefined = [];
 
+
+
   data = Powers;
   data2 = Object.values(Powers);
 
@@ -60,7 +62,8 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
       h => {
         this.hero = h;
         this.activatedPowers = this.hero?.powers;
-        this.form = this.initForm();
+        //this.form = this.initForm();
+        this.formControl();
       }
     );
     console.log(this.data);
@@ -68,10 +71,16 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
 
   initForm(): FormGroup {
     return this.fb.group({
-      force: this.activatedPowers?.includes(Powers.force),
-      elasticity: this.activatedPowers?.includes(Powers.elasticity),
-      invisibility: this.activatedPowers?.includes(Powers.invisibility)
+
+      // force: this.activatedPowers?.includes(Powers.force),
+      // elasticity: this.activatedPowers?.includes(Powers.elasticity),
+      // invisibility: this.activatedPowers?.includes(Powers.invisibility)
     })
+  }
+
+  formControl() {
+    this.form = this.initForm();
+    this.data2.forEach(p => this.form.addControl(p, this.fb.control(this.activatedPowers?.includes(p))));
   }
 
   noChanges() {
